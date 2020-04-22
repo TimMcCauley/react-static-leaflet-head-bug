@@ -1,7 +1,5 @@
 import React from 'react'
 import { useRouteData } from 'react-static'
-//
-
 import { Link } from 'components/Router'
 import Head from 'react-helmet'
 import './leaflet.css'  
@@ -10,6 +8,10 @@ import './leaflet.css'
 const Post = () => {
   const { post } = useRouteData()
 
+
+  // only load leaflet in browser not for react-static
+  // importing leaflet when building react-static website
+  // will remove the head section of the html document and I have no idea why!
   if (typeof document !== 'undefined') {
 
     const a = './leaflet-src.esm.js'    
@@ -21,7 +23,6 @@ const Post = () => {
       const bounds = L.latLngBounds(southWest, northEast)
 
       const mapParams = {
-        //center: [25.95681, -35.729687],
         center: [40.419, -73.889],
         maxBounds: bounds,
         zoom: 10,
@@ -31,9 +32,6 @@ const Post = () => {
 
       const map = L.map('map', mapParams)
 
-
-
-   
       map.setView(mapParams.center, 6)
         
       L.tileLayer(
@@ -49,14 +47,10 @@ const Post = () => {
       
       })
     
-  } else {
-
-    console.log('react-static cant do leaflet')
-
-  }
-
-
-
+  } 
+  // else {
+  //   console.log('react-static cant do leaflet')
+  // }
 
 
   return (

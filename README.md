@@ -1,3 +1,6 @@
-# React-Static - Basic Template
+# React-Static Leaflet Head Bug
 
-To use this template, run `react-static create` and use the `basic` template.
+Start dev server with `yarn start`
+
+Build and run server with `yarn build && yarn serve`
+
